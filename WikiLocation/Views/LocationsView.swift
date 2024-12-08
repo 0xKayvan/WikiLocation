@@ -48,6 +48,7 @@ struct LocationsView: View {
                         ForEach(locationManager.localLocations) { location in
                             LocationCellView(location: location)
                         }
+                        .onDelete(perform: self.removeRows)
                     }
                 }
             }
@@ -67,7 +68,10 @@ struct LocationsView: View {
             .navigationTitle("Locations")
             .navigationBarTitleDisplayMode(.inline)
         }
-        
+    }
+    
+    func removeRows(at offsets: IndexSet) {
+        locationManager.removeLocalLocation(at: offsets)
     }
 }
 
