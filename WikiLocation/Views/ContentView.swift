@@ -11,12 +11,12 @@ struct ContentView: View {
     var body: some View {
         TabView {
             Group {
-                Text("Locations Tab")
+                LocationsView()
                 .tabItem {
                     Label("Locations", systemImage: "mappin.and.ellipse")
                 }
                 
-                Text("Settings Tab")
+                SettingsView()
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
