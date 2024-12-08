@@ -10,8 +10,8 @@ import Foundation
 class Location: Identifiable {
     public var id: String
     public var name: String?
-    public var latitude: Double?
-    public var longitude: Double?
+    public var latitude: Double
+    public var longitude: Double
     
     init(name: String? = nil, latitude: Double, longitude: Double) {
         self.id = UUID().uuidString
