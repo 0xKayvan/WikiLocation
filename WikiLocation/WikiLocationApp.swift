@@ -13,6 +13,7 @@ struct WikiLocationApp: App {
         WindowGroup {
             ContentView()
                 .environmentObject(LocationManager.shared)
+                .environmentObject(SettingsManager.shared)
         }
     }
 }
