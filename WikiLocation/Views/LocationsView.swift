@@ -14,7 +14,14 @@ struct LocationsView: View {
         NavigationStack {
             List {
                 Section(header: Text("Remote")) {
-                    if locationManager.remoteLocations.isEmpty {
+                    if locationManager.isFetchingRemoteLocations {
+                        HStack {
+                            ProgressView()
+                            Text("Fetching remote locations")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                        }
+                    } else if locationManager.remoteLocations.isEmpty {
                         HStack {
                             Image(systemName: "network.slash")
                             Text("No remote locations available")

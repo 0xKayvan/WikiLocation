@@ -12,6 +12,7 @@ class LocationManager: ObservableObject {
     
     @Published public var localLocations: [Location] = []
     @Published public var remoteLocations: [Location] = []
+    @Published public var isFetchingRemoteLocations = false
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -29,6 +30,7 @@ class LocationManager: ObservableObject {
             return
         }
         
+        self.isFetchingRemoteLocations = true
         let dataTaskPublisher = URLSession.shared.dataTaskPublisher(for: url)
         
         dataTaskPublisher
@@ -43,6 +45,7 @@ class LocationManager: ObservableObject {
             .decode(type: [Location].self, decoder: JSONDecoder())
             .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { completion in
+                self.isFetchingRemoteLocations = false
                 switch completion {
                 case .finished:
                     break
@@ -51,7 +54,6 @@ class LocationManager: ObservableObject {
                     break
                 }
             }, receiveValue: { locations in
-                print("fetched \(locations.count) remote locations")
                 self.remoteLocations = locations
             })
             .store(in: &subscriptions)
