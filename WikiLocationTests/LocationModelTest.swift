@@ -12,6 +12,7 @@ final class LocationModelTest: XCTestCase {
 
     func testLocationInit() {
         let location = Location(name: "Test", latitude: 1.0, longitude: 2.0)
+        XCTAssertNotNil(location.id)
         XCTAssertEqual(location.name, "Test")
         XCTAssertEqual(location.latitude, 1.0)
         XCTAssertEqual(location.longitude, 2.0)
@@ -19,6 +20,7 @@ final class LocationModelTest: XCTestCase {
     
     func testLocationInitNoName() {
         let location = Location(latitude: 1.0, longitude: 2.0)
+        XCTAssertNotNil(location.id)
         XCTAssertNil(location.name)
         XCTAssertEqual(location.latitude, 1.0)
         XCTAssertEqual(location.longitude, 2.0)
