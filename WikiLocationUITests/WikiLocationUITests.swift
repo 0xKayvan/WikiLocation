@@ -42,15 +42,24 @@ final class WikiLocationUITests: XCTestCase {
         let locationsTab = app.tabBars.buttons["Locations"]
         locationsTab.tap()
         XCTAssertTrue(locationsTab.isSelected, "The Locations tab should be selected.")
-        let navigationBar = app.navigationBars.firstMatch
-        XCTAssertTrue(navigationBar.exists, "The Locations view should be visible.")
-        XCTAssertTrue(navigationBar.staticTexts["Locations"].exists, "The Locations view should have a title 'Locations'.")
-        
         
         let settingsTab = app.tabBars.buttons["Settings"]
         settingsTab.tap()
         XCTAssertTrue(settingsTab.isSelected, "The Settings tab should be selected.")
         XCTAssertTrue(app.staticTexts["Settings Tab"].exists, "There should be a text equal to 'Settings Tab'.")
+    }
+    
+    @MainActor
+    func testLocationsView() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let locationsTab = app.tabBars.buttons["Locations"]
+        locationsTab.tap()
+        
+        let navigationBar = app.navigationBars.firstMatch
+        XCTAssertTrue(navigationBar.exists, "The Locations view should be visible.")
+        XCTAssertTrue(navigationBar.staticTexts["Locations"].exists, "The Locations view should have a title 'Locations'.")
     }
 
     @MainActor
