@@ -8,7 +8,7 @@
 import XCTest
 @testable import WikiLocation
 
-final class LocationModelTest: XCTestCase {
+final class LocationModelTests: XCTestCase {
 
     func testLocationInit() {
         let location = Location(name: "Test", latitude: 1.0, longitude: 2.0)
