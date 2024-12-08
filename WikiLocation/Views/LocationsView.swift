@@ -55,7 +55,6 @@ struct LocationsView: View {
             .toolbar {
                 ToolbarItem(placement: .topBarLeading) {
                     EditButton()
-                        .disabled(locationManager.localLocations.isEmpty)
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink {
