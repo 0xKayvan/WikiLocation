@@ -16,15 +16,9 @@ struct LocationsView: View {
     ]
     var body: some View {
         NavigationStack {
-            List{
+            List {
                 ForEach(tempLocations) { location in
-                    VStack(alignment: .leading) {
-                        Text(location.name ?? "Unknown")
-                            .font(.headline)
-                        Text("Coordinates: \(location.latitude), \(location.longitude)")
-                            .font(.subheadline)
-                    }
-                    .padding(.vertical, 5)
+                    LocationCellView(location: location)
                 }
             }
             .navigationTitle("Locations")
