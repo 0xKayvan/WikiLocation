@@ -23,12 +23,34 @@ final class WikiLocationUITests: XCTestCase {
     }
 
     @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
+    func testBaseTabView() throws {
         let app = XCUIApplication()
         app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        
+        let locationsTab = app.tabBars.buttons["Locations"]
+        XCTAssertTrue(locationsTab.exists, "The Locations tab should exist.")
+        
+        let settingsTab = app.tabBars.buttons["Settings"]
+        XCTAssertTrue(settingsTab.exists, "The Settings tab should exist.")
+    }
+    
+    @MainActor
+    func testBaseTabViewFunctionality() throws {
+        let app = XCUIApplication()
+        app.launch()
+        
+        let locationsTab = app.tabBars.buttons["Locations"]
+        XCTAssertTrue(locationsTab.exists, "The Locations tab should exist.")
+        locationsTab.tap()
+        XCTAssertTrue(locationsTab.isSelected, "The Locations tab should be selected.")
+        XCTAssertTrue(app.staticTexts["Locations Tab"].exists, "There should be a text equal to 'Locations Tab'.")
+        
+        
+        let settingsTab = app.tabBars.buttons["Settings"]
+        XCTAssertTrue(settingsTab.exists, "The Settings tab should exist.")
+        settingsTab.tap()
+        XCTAssertTrue(settingsTab.isSelected, "The Settings tab should be selected.")
+        XCTAssertTrue(app.staticTexts["Settings Tab"].exists, "There should be a text equal to 'Settings Tab'.")
     }
 
     @MainActor
