@@ -7,11 +7,11 @@
 import Foundation
 import Combine
 
-class LocationManager {
+class LocationManager: ObservableObject {
     public static let shared = LocationManager()
     
-    public var localLocations: [Location] = []
-    public var remoteLocations: [Location] = []
+    @Published public var localLocations: [Location] = []
+    @Published public var remoteLocations: [Location] = []
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -51,6 +51,7 @@ class LocationManager {
                     break
                 }
             }, receiveValue: { locations in
+                print("fetched \(locations.count) remote locations")
                 self.remoteLocations = locations
             })
             .store(in: &subscriptions)

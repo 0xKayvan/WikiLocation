@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LocationsView: View {
-    private let locationManager: LocationManager = .shared
+    @EnvironmentObject private var locationManager: LocationManager
     
     var body: some View {
         NavigationStack {
@@ -66,4 +66,5 @@ struct LocationsView: View {
 
 #Preview {
     LocationsView()
+        .environmentObject(LocationManager.shared)
 }
