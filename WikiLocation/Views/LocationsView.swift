@@ -38,7 +38,7 @@ struct LocationsView: View {
                 Section(header: Text("Local")) {
                     if locationManager.localLocations.isEmpty {
                         NavigationLink {
-                            // Navigate to AddLocationView
+                            AddLocationView()
                         } label: {
                             Image(systemName: "plus")
                             Text("Add Local Location")
@@ -58,7 +58,7 @@ struct LocationsView: View {
                 }
                 ToolbarItem(placement: .topBarTrailing) {
                     NavigationLink {
-                        // Navigate to AddLocationView
+                        AddLocationView()
                     } label: {
                         Image(systemName: "plus")
                     }
