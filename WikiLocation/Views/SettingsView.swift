@@ -21,7 +21,7 @@ struct SettingsView: View {
                     HStack {
                         Image(systemName: "plus")
                         Button("Add Mock Location") {
-                            locationManager.localLocations.append(contentsOf: Location.mocks(count: 5))
+                            locationManager.addLocalLocations(Location.mocks(count: 5))
                         }
                     }
                     .foregroundColor(.primary)
@@ -30,7 +30,7 @@ struct SettingsView: View {
                         Image(systemName: "trash")
                         Button("Clear Local Locations") {
                             // TODO: show confirmation alert
-                            locationManager.localLocations = []
+                            locationManager.clearLocalLocations()
                         }
                     }
                     .foregroundColor(.red)

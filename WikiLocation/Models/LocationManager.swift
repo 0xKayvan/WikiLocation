@@ -10,9 +10,9 @@ import Combine
 class LocationManager: ObservableObject {
     public static let shared = LocationManager()
     
-    @Published public var localLocations: [Location] = []
-    @Published public var remoteLocations: [Location] = []
-    @Published public var isFetchingRemoteLocations = false
+    @Published public private(set) var localLocations: [Location] = []
+    @Published public private(set) var remoteLocations: [Location] = []
+    @Published public private(set) var isFetchingRemoteLocations = false
     
     private var subscriptions = Set<AnyCancellable>()
     
@@ -29,8 +29,20 @@ class LocationManager: ObservableObject {
             .store(in: &subscriptions)
     }
     
-    public func addLocalLocation(location: Location) {
+    public func addLocalLocation(_ location: Location) {
         localLocations.append(location)
+    }
+    
+    public func addLocalLocations(_ locations: [Location]) {
+        localLocations.append(contentsOf: locations)
+    }
+   
+    public func clearLocalLocations() {
+        localLocations.removeAll()
+    }
+    
+    public func removeLocalLocation(at offsets: IndexSet) {
+        localLocations.remove(atOffsets: offsets)
     }
     
     public func fetchRemoteLocations() {
