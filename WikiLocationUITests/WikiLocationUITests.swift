@@ -9,13 +9,12 @@ import XCTest
 
 final class WikiLocationUITests: XCTestCase {
 
+    let app = XCUIApplication()
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        try super.setUpWithError()
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app.launch()
     }
 
     override func tearDownWithError() throws {
@@ -24,9 +23,6 @@ final class WikiLocationUITests: XCTestCase {
 
     @MainActor
     func testBaseTabView() throws {
-        let app = XCUIApplication()
-        app.launch()
-        
         let locationsTab = app.tabBars.buttons["Locations"]
         XCTAssertTrue(locationsTab.exists, "The Locations tab should exist.")
         
@@ -36,39 +32,34 @@ final class WikiLocationUITests: XCTestCase {
     
     @MainActor
     func testBaseTabViewFunctionality() throws {
-        let app = XCUIApplication()
-        app.launch()
-        
-        let locationsTab = app.tabBars.buttons["Locations"]
-        locationsTab.tap()
+        let locationsTab = selectLocationsTab()
         XCTAssertTrue(locationsTab.isSelected, "The Locations tab should be selected.")
         
-        let settingsTab = app.tabBars.buttons["Settings"]
-        settingsTab.tap()
+        let settingsTab = selectSettingsTab()
         XCTAssertTrue(settingsTab.isSelected, "The Settings tab should be selected.")
         XCTAssertTrue(app.staticTexts["Settings Tab"].exists, "There should be a text equal to 'Settings Tab'.")
     }
     
     @MainActor
     func testLocationsView() throws {
-        let app = XCUIApplication()
-        app.launch()
-        
-        let locationsTab = app.tabBars.buttons["Locations"]
-        locationsTab.tap()
+        _ = selectLocationsTab()
         
         let navigationBar = app.navigationBars.firstMatch
         XCTAssertTrue(navigationBar.exists, "The Locations view should be visible.")
         XCTAssertTrue(navigationBar.staticTexts["Locations"].exists, "The Locations view should have a title 'Locations'.")
     }
 
-    @MainActor
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    
+    // MARK: - Helper functions
+    private func selectLocationsTab() -> XCUIElement {
+        let tab = app.tabBars.buttons["Locations"]
+        tab.tap()
+        return tab
+    }
+    
+    private func selectSettingsTab() -> XCUIElement {
+        let tab = app.tabBars.buttons["Settings"]
+        tab.tap()
+        return tab
     }
 }
