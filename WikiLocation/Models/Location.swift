@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Location: Identifiable, Mockable {
+class Location: Identifiable, Mockable, Decodable {
     public var id: String
     public var name: String?
     public var latitude: Double
@@ -49,5 +49,20 @@ class Location: Identifiable, Mockable {
     
     static func mocks(count: Int) -> [Location] {
         return (0..<count).map { _ in Self.mock() }
+    }
+    
+    // MARK: - Decodable
+    required public init(from decoder: any Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        self.id = UUID().uuidString
+        self.name = try? container.decode(String.self, forKey: .name)
+        self.latitude = try container.decode(Double.self, forKey: .latitude)
+        self.longitude = try container.decode(Double.self, forKey: .longitude)
+    }
+
+    enum CodingKeys: String, CodingKey {
+        case name = "name"
+        case latitude = "lat"
+        case longitude = "long"
     }
 }
