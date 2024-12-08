@@ -20,14 +20,13 @@ class Location: Identifiable, Mockable {
         self.longitude = longitude
     }
     
-    
     // MARK: - Mockable
     static func stub() -> Location {
         return Location(name: "Amsterdam", latitude: 52.3676, longitude: 4.9041)
     }
     
     static func mock() -> Location {
-        var locations = [
+        let locations = [
             Location(name: "Amsterdam", latitude: 52.3676, longitude: 4.9041),
             Location(name: "Rotterdam", latitude: 51.9244, longitude: 4.4777),
             Location(name: "The Hague", latitude: 52.0705, longitude: 4.3007),

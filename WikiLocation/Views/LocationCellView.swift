@@ -24,10 +24,9 @@ struct LocationCellView: View {
                     .font(.subheadline)
             }
         }
-        .padding(.vertical, 5)
     }
 }
 
 #Preview {
-    LocationCellView(location: Location(name: "Loc 1", latitude: 10.101010, longitude: 20.202020))
+    LocationCellView(location: Location.stub())
 }
