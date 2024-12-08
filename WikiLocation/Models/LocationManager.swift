@@ -18,6 +18,15 @@ class LocationManager: ObservableObject {
     
     private init() {
         self.fetchRemoteLocations()
+        SettingsManager.shared.$isRemoteFetchingEnabled
+            .sink { [weak self] isEnabled in
+                if isEnabled {
+                    self?.fetchRemoteLocations()
+                } else {
+                    self?.remoteLocations = []
+                }
+            }
+            .store(in: &subscriptions)
     }
     
     public func addLocalLocation(location: Location) {
