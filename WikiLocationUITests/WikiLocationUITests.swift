@@ -7,14 +7,37 @@
 
 import XCTest
 
-final class WikiLocationUITests: XCTestCase {
-
+class UITests: XCTestCase {
     let app = XCUIApplication()
     
     override func setUpWithError() throws {
         try super.setUpWithError()
         continueAfterFailure = false
         app.launch()
+    }
+
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+    
+    // MARK: - Helper functions
+    func selectLocationsTab() -> XCUIElement {
+        let tab = app.tabBars.buttons["Locations"]
+        tab.tap()
+        return tab
+    }
+    
+    func selectSettingsTab() -> XCUIElement {
+        let tab = app.tabBars.buttons["Settings"]
+        tab.tap()
+        return tab
+    }
+}
+
+final class WikiLocationUITests: UITests {
+    
+    override func setUpWithError() throws {
+        try super.setUpWithError()
     }
 
     override func tearDownWithError() throws {
@@ -40,26 +63,8 @@ final class WikiLocationUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["Settings Tab"].exists, "There should be a text equal to 'Settings Tab'.")
     }
     
-    @MainActor
-    func testLocationsView() throws {
-        _ = selectLocationsTab()
-        
-        let navigationBar = app.navigationBars.firstMatch
-        XCTAssertTrue(navigationBar.exists, "The Locations view should be visible.")
-        XCTAssertTrue(navigationBar.staticTexts["Locations"].exists, "The Locations view should have a title 'Locations'.")
-    }
+
 
     
-    // MARK: - Helper functions
-    private func selectLocationsTab() -> XCUIElement {
-        let tab = app.tabBars.buttons["Locations"]
-        tab.tap()
-        return tab
-    }
-    
-    private func selectSettingsTab() -> XCUIElement {
-        let tab = app.tabBars.buttons["Settings"]
-        tab.tap()
-        return tab
-    }
+
 }
