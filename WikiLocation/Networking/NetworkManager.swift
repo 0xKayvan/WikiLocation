@@ -31,6 +31,4 @@ class NetworkManager {
         
         return publisher
     }
-
-//    }
 }
