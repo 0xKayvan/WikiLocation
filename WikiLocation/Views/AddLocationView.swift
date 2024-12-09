@@ -21,7 +21,9 @@ struct AddLocationView: View {
             Section("Location Info") {
                 TextField("Name", text: $name)
                 TextField("Latitude", text: $latitude)
+                    .keyboardType(.decimalPad)
                 TextField("Longitude", text: $longitude)
+                    .keyboardType(.decimalPad)
             }
             
             Section {
