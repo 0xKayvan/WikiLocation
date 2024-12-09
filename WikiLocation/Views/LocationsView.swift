@@ -31,6 +31,10 @@ struct LocationsView: View {
                     } else {
                         ForEach(locationManager.remoteLocations) { location in
                             LocationCellView(location: location)
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    self.didTapOn(location)
+                                }
                         }
                     }
                 }
@@ -47,6 +51,10 @@ struct LocationsView: View {
                     } else {
                         ForEach(locationManager.localLocations) { location in
                             LocationCellView(location: location)
+                                .contentShape(Rectangle())
+                                .onTapGesture {
+                                    self.didTapOn(location)
+                                }
                         }
                         .onDelete(perform: self.removeRows)
                     }
@@ -71,6 +79,15 @@ struct LocationsView: View {
     
     func removeRows(at offsets: IndexSet) {
         locationManager.removeLocalLocation(at: offsets)
+    }
+    
+    func didTapOn(_ location: Location) {
+        let schemeURL = "wikipedia://places/?latitude=\(location.latitude)&longitude=\(location.longitude)"
+        guard let url = URL(string: schemeURL) else {
+            // TODO: show alert
+            return
+        }
+        UIApplication.shared.open(url)
     }
 }
 
