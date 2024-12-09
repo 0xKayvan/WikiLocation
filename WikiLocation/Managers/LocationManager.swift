@@ -4,19 +4,25 @@
 //
 //  Created by Kayvan Nouri on 08/12/2024.
 //
+
 import Foundation
 import Combine
 
 class LocationManager: ObservableObject {
     public static let shared = LocationManager()
     
-    @Published public private(set) var localLocations: [Location] = []
+    @Published public private(set) var localLocations: [Location] = [] {
+        didSet {
+            UserDefaults.locations = self.localLocations
+        }
+    }
     @Published public private(set) var remoteLocations: [Location] = []
     @Published public private(set) var isFetchingRemoteLocations = false
     
     private var subscriptions = Set<AnyCancellable>()
     
     private init() {
+        self.localLocations = UserDefaults.locations
         self.fetchRemoteLocations()
         SettingsManager.shared.$isRemoteFetchingEnabled
             .sink { [weak self] isEnabled in
