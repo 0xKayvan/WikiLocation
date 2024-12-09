@@ -12,7 +12,8 @@ import XCTest
 final class UserDefaultLocationTests: XCTestCase {
 
     func testUserDefaultSaveAndRetrieveFunctionality() {
-        UserDefaults.locationsKey = "locations-test"
+
+        
         let locations = UserDefaults.standard.data(forKey: UserDefaults.locationsKey)
         XCTAssertNil(locations, "Locations should be initially nil.")
         

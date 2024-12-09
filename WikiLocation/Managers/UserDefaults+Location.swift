@@ -8,7 +8,7 @@
 import Foundation
 
 extension UserDefaults {
-    static var locationsKey = "locations"
+    static var locationsKey = AppStateManager.useMocks ? "locations-test" : "locations"
     
     static var locations: [Location] {
         get {
