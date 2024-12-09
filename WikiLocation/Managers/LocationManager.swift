@@ -65,6 +65,7 @@ class LocationManager: ObservableObject {
             return
         }
         self.isFetchingRemoteLocations = true
+        self.remoteLocations.removeAll()
         publisher
             .tryMap { data in
                 let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])

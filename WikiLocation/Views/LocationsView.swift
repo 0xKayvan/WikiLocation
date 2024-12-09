@@ -72,6 +72,9 @@ struct LocationsView: View {
                     }
                 }
             }
+            .refreshable {
+                locationManager.fetchRemoteLocations()
+            }
             .navigationTitle("Locations")
             .navigationBarTitleDisplayMode(.inline)
         }
