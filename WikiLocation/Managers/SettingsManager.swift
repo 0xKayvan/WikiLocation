@@ -13,5 +13,4 @@ public class SettingsManager: ObservableObject {
     @Published public var isRemoteFetchingEnabled = true
     
     private init() {}
-    
 }

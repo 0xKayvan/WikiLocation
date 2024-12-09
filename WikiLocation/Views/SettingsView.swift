@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @EnvironmentObject var settingsManager: SettingsManager
-    @EnvironmentObject var locationManager: LocationManager
+    @EnvironmentObject private var settingsManager: SettingsManager
+    @EnvironmentObject private var locationManager: LocationManager
     
     var body: some View {
         NavigationStack {
