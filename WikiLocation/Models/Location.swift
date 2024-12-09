@@ -66,3 +66,12 @@ class Location: Identifiable, Mockable, Decodable {
         case longitude = "long"
     }
 }
+
+// MARK: - Helpers
+extension Location {
+    static func areCoordinatesValid(latitude: Double, longitude: Double) -> Bool {
+        let isLatitudeValid = (-90...90).contains(latitude)
+        let isLongitudeValid = (-180...180).contains(longitude)
+        return isLatitudeValid && isLongitudeValid
+    }
+}

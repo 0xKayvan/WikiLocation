@@ -21,10 +21,10 @@ final class LocationManagerTests: XCTestCase {
     func testAppendLocalLocation() {
         let locationManager = LocationManager.shared
         let location = Location(name: "Test", latitude: 1.0, longitude: 2.0)
-        locationManager.addLocalLocation(location: location)
+        locationManager.addLocalLocation(location)
         XCTAssertEqual(locationManager.localLocations.count, 1, "Local locations should have one item")
         addTeardownBlock {
-            locationManager.localLocations = []
+            locationManager.clearLocalLocations()
         }
     }
 }

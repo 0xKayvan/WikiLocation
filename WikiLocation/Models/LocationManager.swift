@@ -29,6 +29,15 @@ class LocationManager: ObservableObject {
             .store(in: &subscriptions)
     }
     
+    // TODO: change to a throwing function
+    public func createAndSaveLocalLocation(name: String?, latitude: Double, longitude: Double) -> Bool {
+        if !Location.areCoordinatesValid(latitude: latitude, longitude: longitude) {
+            return false
+        }
+        self.addLocalLocation(Location(name: name, latitude: latitude, longitude: longitude))
+        return true
+    }
+    
     public func addLocalLocation(_ location: Location) {
         localLocations.append(location)
     }

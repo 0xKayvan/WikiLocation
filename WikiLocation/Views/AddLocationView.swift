@@ -24,7 +24,6 @@ struct AddLocationView: View {
                 TextField("Longitude", text: $longitude)
             }
             
-            
             Section {
                 Button("Save") {
                     saveAndDismiss()
@@ -47,25 +46,22 @@ struct AddLocationView: View {
     private func validateForm() {
         guard let latitude = Double(latitude),
               let longitude = Double(longitude),
-              self.isLocationValid(latitude: latitude, longitude: longitude),
-              !name.isEmpty else
-        {
+              Location.areCoordinatesValid(latitude: latitude, longitude: longitude) else {
             self.isFormValid = false
             return
         }
         self.isFormValid = true
     }
     
-    private func isLocationValid(latitude: Double, longitude: Double) -> Bool {
-        let isLatitudeValid = (-90...90).contains(latitude)
-        let isLongitudeValid = (-180...180).contains(longitude)
-        return isLatitudeValid && isLongitudeValid
-    }
     
     private func saveAndDismiss() {
-        let location = Location(name: name, latitude: Double(latitude) ?? 0, longitude: Double(longitude) ?? 0)
-        locationManager.addLocalLocation(location)
-        dismiss()
+        if let latitude = Double(self.latitude),
+           let longitude = Double(self.longitude),
+           self.locationManager.createAndSaveLocalLocation(name: name, latitude: latitude, longitude: longitude) {
+            dismiss()
+            return
+        }
+        //TODO: show alert
     }
 }
 
