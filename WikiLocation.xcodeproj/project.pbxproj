@@ -27,6 +27,7 @@
 		FA5AE9992D05C2B50094B4F1 /* WikiLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5AE9A92D05C2B70094B4F1 /* WikiLocationTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WikiLocationTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA5AE9B32D05C2B70094B4F1 /* WikiLocationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WikiLocationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FAF443DB2D07788500FDB46E /* WikiLocation.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = WikiLocation.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -75,6 +76,7 @@
 		FA5AE9902D05C2B50094B4F1 = {
 			isa = PBXGroup;
 			children = (
+				FAF443DB2D07788500FDB46E /* WikiLocation.xctestplan */,
 				FA5AE99B2D05C2B50094B4F1 /* WikiLocation */,
 				FA5AE9AC2D05C2B70094B4F1 /* WikiLocationTests */,
 				FA5AE9B62D05C2B70094B4F1 /* WikiLocationUITests */,

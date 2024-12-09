@@ -1,0 +1,43 @@
+{
+  "configurations" : [
+    {
+      "id" : "A037906F-D73E-43A2-B83E-474D15FEA357",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "environmentVariableEntries" : [
+      {
+        "key" : "USE_MOCKS",
+        "value" : "true"
+      }
+    ],
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:WikiLocation.xcodeproj",
+      "identifier" : "FA5AE9982D05C2B50094B4F1",
+      "name" : "WikiLocation"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:WikiLocation.xcodeproj",
+        "identifier" : "FA5AE9A82D05C2B70094B4F1",
+        "name" : "WikiLocationTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:WikiLocation.xcodeproj",
+        "identifier" : "FA5AE9B22D05C2B70094B4F1",
+        "name" : "WikiLocationUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
