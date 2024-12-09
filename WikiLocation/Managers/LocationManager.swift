@@ -61,6 +61,10 @@ class LocationManager: ObservableObject {
     }
     
     public func fetchRemoteLocations() {
+        if self.isFetchingRemoteLocations {
+            return
+        }
+        
         guard let publisher = NetworkManager.shared.fetchLocations() else {
             return
         }
