@@ -9,6 +9,7 @@ import SwiftUI
 
 struct LocationsView: View {
     @EnvironmentObject private var locationManager: LocationManager
+    @EnvironmentObject private var settingsManager: SettingsManager
     
     var body: some View {
         NavigationStack {
@@ -73,7 +74,9 @@ struct LocationsView: View {
                 }
             }
             .refreshable {
-                locationManager.fetchRemoteLocations()
+                if settingsManager.isRemoteFetchingEnabled {
+                    locationManager.fetchRemoteLocations()
+                }
             }
             .navigationTitle("Locations")
             .navigationBarTitleDisplayMode(.inline)
@@ -97,4 +100,5 @@ struct LocationsView: View {
 #Preview {
     LocationsView()
         .environmentObject(LocationManager.shared)
+        .environmentObject(SettingsManager.shared)
 }
