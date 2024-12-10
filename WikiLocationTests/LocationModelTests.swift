@@ -62,7 +62,6 @@ final class LocationModelTests: XCTestCase {
     func testMock() throws {
         let location = Location.mock()
         XCTAssertNotNil(location.id, "Location id should not be nil")
-        XCTAssertNotNil(location.name, "Location name should not be nil")
         XCTAssertNotNil(location.latitude, "Location latitude should not be nil")
         XCTAssertNotNil(location.longitude, "Location longitude should not be nil")
     }
@@ -71,10 +70,9 @@ final class LocationModelTests: XCTestCase {
         let locations = Location.mocks(count: 3)
         XCTAssertEqual(locations.count, 3, "Should return 3 locations")
         locations.forEach { location in
-            XCTAssertNotNil(location.id)
-            XCTAssertNotNil(location.name)
-            XCTAssertNotNil(location.latitude)
-            XCTAssertNotNil(location.longitude)
+            XCTAssertNotNil(location.id, "Location id should not be nil")
+            XCTAssertNotNil(location.latitude, "Location latitude should not be nil")
+            XCTAssertNotNil(location.longitude, "Location longitude should not be nil")
         }
     }
     

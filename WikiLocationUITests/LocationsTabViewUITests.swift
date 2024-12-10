@@ -1,5 +1,5 @@
 //
-//  WikiLocationLocationsTabViewUITests.swift
+//  LocationsTabViewUITests.swift
 //  WikiLocation
 //
 //  Created by Kayvan Nouri on 08/12/2024.
@@ -7,7 +7,7 @@
 
 import XCTest
 
-final class WikiLocationLocationsTabViewUITests: UITests {
+final class LocationsTabViewUITests: UITestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()

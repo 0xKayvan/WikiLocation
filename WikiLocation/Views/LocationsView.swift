@@ -25,8 +25,10 @@ struct LocationsView: View {
                     } else if locationManager.remoteLocations.isEmpty {
                         HStack {
                             Image(systemName: "network.slash")
+                                .accessibilityLabel("no-remote-locations-image")
                             Text("No remote locations available")
                                 .font(.subheadline)
+                                .accessibilityLabel("no-remote-locations-text")
                         }
                         .foregroundColor(.secondary)
                     } else {
@@ -46,7 +48,9 @@ struct LocationsView: View {
                             AddLocationView()
                         } label: {
                             Image(systemName: "plus")
+                                .accessibilityLabel("add-local-location-image")
                             Text("Add Local Location")
+                                .accessibilityLabel("add-local-location-text")
                         }
                         .foregroundColor(.accentColor)
                     } else {

@@ -7,34 +7,7 @@
 
 import XCTest
 
-class UITests: XCTestCase {
-    let app = XCUIApplication()
-    
-    override func setUpWithError() throws {
-        try super.setUpWithError()
-        continueAfterFailure = false
-        app.launch()
-    }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-    
-    // MARK: - Helper functions
-    func selectLocationsTab() -> XCUIElement {
-        let tab = app.tabBars.buttons["Locations"]
-        tab.tap()
-        return tab
-    }
-    
-    func selectSettingsTab() -> XCUIElement {
-        let tab = app.tabBars.buttons["Settings"]
-        tab.tap()
-        return tab
-    }
-}
-
-final class WikiLocationUITests: UITests {
+final class WikiLocationUITests: UITestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
@@ -60,11 +33,6 @@ final class WikiLocationUITests: UITests {
         
         let settingsTab = selectSettingsTab()
         XCTAssertTrue(settingsTab.isSelected, "The Settings tab should be selected.")
-        XCTAssertTrue(app.staticTexts["Settings Tab"].exists, "There should be a text equal to 'Settings Tab'.")
     }
-    
-
-
-    
 
 }

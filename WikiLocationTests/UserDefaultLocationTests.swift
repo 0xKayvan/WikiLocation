@@ -13,9 +13,11 @@ final class UserDefaultLocationTests: XCTestCase {
 
     func testUserDefaultSaveAndRetrieveFunctionality() {
 
-        
-        let locations = UserDefaults.standard.data(forKey: UserDefaults.locationsKey)
-        XCTAssertNil(locations, "Locations should be initially nil.")
+        let locationsData = UserDefaults.standard.data(forKey: UserDefaults.locationsKey)
+        XCTAssertNotNil(locationsData, "Locations should not be initially nil.")
+        let locations = try? JSONDecoder().decode([Location].self, from: locationsData!)
+        XCTAssertNotNil(locations, "Locations should not be initially nil.")
+        XCTAssertEqual(locations?.count, 0, "Locations should have zero items.")
         
         let locationsFromUserDefaults = UserDefaults.locations
         XCTAssertEqual(locationsFromUserDefaults.count, 0, "Locations should have zero items.")

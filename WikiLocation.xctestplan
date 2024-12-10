@@ -11,6 +11,14 @@
   "defaultOptions" : {
     "environmentVariableEntries" : [
       {
+        "key" : "FB_REFERENCE_IMAGE_DIR",
+        "value" : "$(SOURCE_ROOT)\/$(PROJECT_NAME)Tests\/ReferenceImages"
+      },
+      {
+        "key" : "IMAGE_DIFF_DIR",
+        "value" : "$(SOURCE_ROOT)\/$(PROJECT_NAME)Tests\/FailureDiffs"
+      },
+      {
         "key" : "USE_MOCKS",
         "value" : "true"
       }

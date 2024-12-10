@@ -11,4 +11,8 @@ class AppStateManager {
     static var useMocks: Bool {
         return Bool(ProcessInfo.processInfo.environment["USE_MOCKS"] ?? "") ?? false
     }
+    
+    static var isUITesting: Bool {
+        return Bool(ProcessInfo.processInfo.environment["UI_TESTING"] ?? "") ?? false
+    }
 }
