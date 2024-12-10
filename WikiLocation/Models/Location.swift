@@ -7,7 +7,7 @@
 
 import Foundation
 
-class Location: Identifiable, Mockable, Codable {
+class Location: Identifiable, Mockable, Codable, Equatable {
     public var id: String
     public var name: String?
     public var latitude: Double
@@ -65,6 +65,14 @@ class Location: Identifiable, Mockable, Codable {
         case name = "name"
         case latitude = "lat"
         case longitude = "long"
+    }
+    
+    // MARK: - Encodable
+    static func == (lhs: Location, rhs: Location) -> Bool {
+        return lhs.id == rhs.id &&
+               lhs.name == rhs.name &&
+               lhs.latitude == rhs.latitude &&
+               lhs.longitude == rhs.longitude
     }
 }
 

@@ -12,18 +12,18 @@ final class LocationModelTests: XCTestCase {
 
     func testLocationInit() throws {
         let location = Location(name: "Test", latitude: 1.0, longitude: 2.0)
-        XCTAssertNotNil(location.id)
-        XCTAssertEqual(location.name, "Test")
-        XCTAssertEqual(location.latitude, 1.0)
-        XCTAssertEqual(location.longitude, 2.0)
+        XCTAssertNotNil(location.id, "Location id should not be nil")
+        XCTAssertEqual(location.name, "Test", "Location name should be Test")
+        XCTAssertEqual(location.latitude, 1.0, "Location latitude should be 1.0")
+        XCTAssertEqual(location.longitude, 2.0, "Location longitude should be 2.0")
     }
     
     func testLocationInitNoName() throws {
         let location = Location(latitude: 1.0, longitude: 2.0)
-        XCTAssertNotNil(location.id)
-        XCTAssertNil(location.name)
-        XCTAssertEqual(location.latitude, 1.0)
-        XCTAssertEqual(location.longitude, 2.0)
+        XCTAssertNotNil(location.id, "Location id should not be nil")
+        XCTAssertNil(location.name, "Location name should be nil")
+        XCTAssertEqual(location.latitude, 1.0, "Location latitude should be 1.0")
+        XCTAssertEqual(location.longitude, 2.0, "Location longitude should be 2.0")
     }
     
     func testLocationCoordinateRangeValidity() throws {
@@ -53,7 +53,7 @@ final class LocationModelTests: XCTestCase {
     
     func testStub() throws {
         let location = Location.stub()
-        XCTAssertNotNil(location.id)
+        XCTAssertNotNil(location.id, "Default stub id should not be nil")
         XCTAssertEqual(location.name, "Amsterdam", "Default stub name should be Amsterdam")
         XCTAssertEqual(location.latitude, 52.3676, "Default stub latitude should be 52.3676")
         XCTAssertEqual(location.longitude, 4.9041, "Default stub longitude should be 4.9041")
@@ -61,10 +61,10 @@ final class LocationModelTests: XCTestCase {
     
     func testMock() throws {
         let location = Location.mock()
-        XCTAssertNotNil(location.id)
-        XCTAssertNotNil(location.name)
-        XCTAssertNotNil(location.latitude)
-        XCTAssertNotNil(location.longitude)
+        XCTAssertNotNil(location.id, "Location id should not be nil")
+        XCTAssertNotNil(location.name, "Location name should not be nil")
+        XCTAssertNotNil(location.latitude, "Location latitude should not be nil")
+        XCTAssertNotNil(location.longitude, "Location longitude should not be nil")
     }
     
     func testMocks() throws {
@@ -98,10 +98,7 @@ final class LocationModelTests: XCTestCase {
         XCTAssertNotNil(data, "Encoded data should not be nil")
         let decodedLocation = try? decoder.decode(Location.self, from: data!)
         XCTAssertNotNil(decodedLocation, "Decoded location should not be nil")
-        XCTAssertEqual(location.id, decodedLocation!.id, "Decoded location id should match the original location id")
-        XCTAssertEqual(location.name, decodedLocation!.name, "Decoded location name should match the original location name")
-        XCTAssertEqual(location.latitude, decodedLocation!.latitude, "Decoded location latitude should match the original location latitude")
-        XCTAssertEqual(location.longitude, decodedLocation!.longitude, "Decoded location longitude should match the original location longitude")
+        XCTAssertEqual(location, decodedLocation, "Decoded location should match the original location")
     }
         
 }
