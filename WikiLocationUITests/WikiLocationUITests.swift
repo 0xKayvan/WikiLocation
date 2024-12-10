@@ -12,7 +12,13 @@ class UITests: XCTestCase {
     
     override func setUpWithError() throws {
         try super.setUpWithError()
+        
+        var environment = ProcessInfo.processInfo.environment
+        environment["USE_MOCKS"] = "true"
+        environment["REMOTE_FETCHING_ENABLED"] = "true"
+        
         continueAfterFailure = false
+        app.launchEnvironment = environment
         app.launch()
     }
 
