@@ -21,14 +21,15 @@ class LocationManager: ObservableObject {
     
     private var subscriptions = Set<AnyCancellable>()
     
-    private init() {
+    fileprivate init() {
         self.localLocations = UserDefaults.locations
         SettingsManager.shared.$isRemoteFetchingEnabled
             .sink { [weak self] isEnabled in
+                guard let self = self else { return }
                 if isEnabled {
-                    self?.fetchRemoteLocations()
-                } else {
-                    self?.remoteLocations = []
+                    self.fetchRemoteLocations()
+                } else if !self.remoteLocations.isEmpty { // to prevent multiple events when already empty
+                    self.remoteLocations = []
                 }
             }
             .store(in: &subscriptions)
@@ -68,7 +69,9 @@ class LocationManager: ObservableObject {
             return
         }
         self.isFetchingRemoteLocations = true
-        self.remoteLocations.removeAll()
+        if !self.remoteLocations.isEmpty { // to prevent multiple events when already empty
+            self.remoteLocations.removeAll()
+        }
         publisher
             .tryMap { data in
                 let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
@@ -93,5 +96,18 @@ class LocationManager: ObservableObject {
                 self.remoteLocations = locations
             })
             .store(in: &subscriptions)
+    }
+}
+
+class SpyLocationManager: LocationManager {
+    var didCallAddLocalLocation = false
+    
+    override init() {
+        super.init()
+    }
+    
+    override func addLocalLocation(_ location: Location) {
+        super.addLocalLocation(location)
+        didCallAddLocalLocation = true
     }
 }
