@@ -25,7 +25,7 @@ final class SettingsManagerTests: XCTestCase {
     func testSettingsManagerInit() throws {
         let settingsManager = SettingsManager.shared
         XCTAssertNotNil(settingsManager, "SettingsManager should not be nil.")
-        XCTAssertTrue(settingsManager.isRemoteFetchingEnabled, "Remote fetching should be enabled by default.")
+        XCTAssertFalse(settingsManager.isRemoteFetchingEnabled, "Remote fetching should be disabled by default.")
     }
 
     func testRemoteFetchingObservability() throws {
