@@ -2,6 +2,9 @@
 
 WikiLocation is a mini iOS application written in Swift, using SwiftUI and latest swift features to accompany Wikipedia Mobile Application.
 
+![test workflow](https://github.com/0xKayvan/WikiLocation/actions/workflows/test.yml/badge.svg)
+![GPLv3 License](https://img.shields.io/badge/license-GPLv3-lightgrey.svg)
+
 Users can fetch a list of predefined locations from a remote server (currently Github), add location to their list and by tapping on each location, Wikipedia app opens and shows the selected location alongside nearest Wikipedia article.
 
 For this feature to work you need a slightly modified version of Wikipedia which you can clone from here: https://github.com/0xKayvan/wikipedia-ios
