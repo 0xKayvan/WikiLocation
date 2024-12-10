@@ -16,12 +16,7 @@ The app uses multiple Swift frameworks including `Combine`, `SwiftUI` and `Found
 
 ## Screenshots
 
-couple of screenshots will be added here
-
-<img src="Screenshots/ScreenShot01.png" width="250" alt="Screenshot 1"/>
-<img src="Screenshots/ScreenShot02.png" width="250" alt="Screenshot 2"/>
-<img src="Screenshots/ScreenShot03.png" width="250" alt="Screenshot 3"/>
-<img src="Screenshots/ScreenShot04.png" width="250" alt="Screenshot 4"/>
+<img src="Screenshots/ScreenShot01.png" width="250" alt="Screenshot 1"/> <img src="Screenshots/ScreenShot02.png" width="250" alt="Screenshot 2"/> <img src="Screenshots/ScreenShot03.png" width="250" alt="Screenshot 3"/> <img src="Screenshots/ScreenShot04.png" width="250" alt="Screenshot 4"/>
 
 ## Development
 
