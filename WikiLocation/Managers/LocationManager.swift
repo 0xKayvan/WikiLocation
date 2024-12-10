@@ -23,7 +23,6 @@ class LocationManager: ObservableObject {
     
     private init() {
         self.localLocations = UserDefaults.locations
-        self.fetchRemoteLocations()
         SettingsManager.shared.$isRemoteFetchingEnabled
             .sink { [weak self] isEnabled in
                 if isEnabled {
