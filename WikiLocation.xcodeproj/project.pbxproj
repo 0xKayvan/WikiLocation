@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		FAF444292D07DCC300FDB46E /* iOSSnapshotTestCase in Frameworks */ = {isa = PBXBuildFile; productRef = FAF444282D07DCC300FDB46E /* iOSSnapshotTestCase */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		FA5AE9AA2D05C2B70094B4F1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -22,6 +26,19 @@
 			remoteInfo = WikiLocation;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FAF444262D07DB0E00FDB46E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		FA5AE9992D05C2B50094B4F1 /* WikiLocation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WikiLocation.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAF444292D07DCC300FDB46E /* iOSSnapshotTestCase in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -139,6 +157,7 @@
 			);
 			name = WikiLocationTests;
 			packageProductDependencies = (
+				FAF444282D07DCC300FDB46E /* iOSSnapshotTestCase */,
 			);
 			productName = WikiLocationTests;
 			productReference = FA5AE9A92D05C2B70094B4F1 /* WikiLocationTests.xctest */;
@@ -151,6 +170,7 @@
 				FA5AE9AF2D05C2B70094B4F1 /* Sources */,
 				FA5AE9B02D05C2B70094B4F1 /* Frameworks */,
 				FA5AE9B12D05C2B70094B4F1 /* Resources */,
+				FAF444262D07DB0E00FDB46E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -199,6 +219,9 @@
 			);
 			mainGroup = FA5AE9902D05C2B50094B4F1;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				FAF444272D07DCC300FDB46E /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = FA5AE99A2D05C2B50094B4F1 /* Products */;
 			projectDirPath = "";
@@ -556,6 +579,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		FAF444272D07DCC300FDB46E /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/uber/ios-snapshot-test-case.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		FAF444282D07DCC300FDB46E /* iOSSnapshotTestCase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = FAF444272D07DCC300FDB46E /* XCRemoteSwiftPackageReference "ios-snapshot-test-case" */;
+			productName = iOSSnapshotTestCase;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FA5AE9912D05C2B50094B4F1 /* Project object */;
 }
