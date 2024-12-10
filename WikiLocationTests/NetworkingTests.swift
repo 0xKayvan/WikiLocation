@@ -76,7 +76,6 @@ final class NetworkManagerTests: XCTestCase {
                 let receivedString = String(data: data, encoding: .utf8)
                 XCTAssertNotNil(data, "Data should not be nil")
                 XCTAssertEqual(receivedString, expectedString, "Received string should match the expected one")
-                print(receivedString!)
                 expectationToFulfill.fulfill()
             }
             .store(in: &subscriptions)
