@@ -10,7 +10,7 @@ import Combine
 public class SettingsManager: ObservableObject {
     public static let shared = SettingsManager()
     
-    @Published public var isRemoteFetchingEnabled = true
+    @Published public var isRemoteFetchingEnabled: Bool = !AppStateManager.useMocks
     
     private init() {}
 }
