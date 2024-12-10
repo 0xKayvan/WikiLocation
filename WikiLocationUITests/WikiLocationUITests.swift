@@ -7,15 +7,37 @@
 
 import XCTest
 
-final class WikiLocationUITests: XCTestCase {
-
+class UITests: XCTestCase {
+    let app = XCUIApplication()
+    
     override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        try super.setUpWithError()
         continueAfterFailure = false
+        app.launch()
+    }
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+    override func tearDownWithError() throws {
+        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    }
+    
+    // MARK: - Helper functions
+    func selectLocationsTab() -> XCUIElement {
+        let tab = app.tabBars.buttons["Locations"]
+        tab.tap()
+        return tab
+    }
+    
+    func selectSettingsTab() -> XCUIElement {
+        let tab = app.tabBars.buttons["Settings"]
+        tab.tap()
+        return tab
+    }
+}
+
+final class WikiLocationUITests: UITests {
+    
+    override func setUpWithError() throws {
+        try super.setUpWithError()
     }
 
     override func tearDownWithError() throws {
@@ -23,21 +45,26 @@ final class WikiLocationUITests: XCTestCase {
     }
 
     @MainActor
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testBaseTabView() throws {
+        let locationsTab = app.tabBars.buttons["Locations"]
+        XCTAssertTrue(locationsTab.exists, "The Locations tab should exist.")
+        
+        let settingsTab = app.tabBars.buttons["Settings"]
+        XCTAssertTrue(settingsTab.exists, "The Settings tab should exist.")
     }
-
+    
     @MainActor
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
+    func testBaseTabViewFunctionality() throws {
+        let locationsTab = selectLocationsTab()
+        XCTAssertTrue(locationsTab.isSelected, "The Locations tab should be selected.")
+        
+        let settingsTab = selectSettingsTab()
+        XCTAssertTrue(settingsTab.isSelected, "The Settings tab should be selected.")
+        XCTAssertTrue(app.staticTexts["Settings Tab"].exists, "There should be a text equal to 'Settings Tab'.")
     }
+    
+
+
+    
+
 }
