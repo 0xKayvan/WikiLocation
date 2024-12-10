@@ -22,7 +22,7 @@ class LocationManager: ObservableObject {
     private var subscriptions = Set<AnyCancellable>()
     
     fileprivate init() {
-        self.localLocations = UserDefaults.locations
+        self.localLocations = AppStateManager.isUITesting ? [] : UserDefaults.locations
         SettingsManager.shared.$isRemoteFetchingEnabled
             .sink { [weak self] isEnabled in
                 guard let self = self else { return }
