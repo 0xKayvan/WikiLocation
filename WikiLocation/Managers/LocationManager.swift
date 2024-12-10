@@ -21,7 +21,7 @@ class LocationManager: ObservableObject {
     
     private var subscriptions = Set<AnyCancellable>()
     
-    private init() {
+    fileprivate init() {
         self.localLocations = UserDefaults.locations
         SettingsManager.shared.$isRemoteFetchingEnabled
             .sink { [weak self] isEnabled in
@@ -96,5 +96,18 @@ class LocationManager: ObservableObject {
                 self.remoteLocations = locations
             })
             .store(in: &subscriptions)
+    }
+}
+
+class SpyLocationManager: LocationManager {
+    var didCallAddLocalLocation = false
+    
+    override init() {
+        super.init()
+    }
+    
+    override func addLocalLocation(_ location: Location) {
+        super.addLocalLocation(location)
+        didCallAddLocalLocation = true
     }
 }
